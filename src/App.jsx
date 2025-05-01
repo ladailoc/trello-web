@@ -4,33 +4,41 @@ import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
 import ThreeDRotation from "@mui/icons-material/ThreeDRotation";
 import HomeIcon from "@mui/icons-material/Home";
 import { pink } from "@mui/material/colors";
-import IconButton from "@mui/material/IconButton";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Box from "@mui/material/Box";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Select from "@mui/material/Select"; // Added import
+import MenuItem from "@mui/material/MenuItem"; // Added import
 import { createAppTheme } from "./theme";
-
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 function App() {
-  // Sử dụng useState để lưu trạng thái chế độ sáng/tối
+  // Lưu trữ chế độ: 'light', 'dark', hoặc 'system'
   const [mode, setMode] = useState(() => {
-    // Khôi phục chế độ từ localStorage nếu có
     const savedMode = localStorage.getItem("theme-mode");
-    return savedMode || "light";
+    return savedMode || "system"; // Mặc định là 'system'
   });
 
-  // Tạo theme dựa trên mode hiện tại
-  const theme = createAppTheme(mode);
+  // Phát hiện chế độ hệ thống (light/dark)
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
-  // Lưu chế độ vào localStorage khi nó thay đổi
+  // Xác định palette.mode dựa trên mode
+  const paletteMode =
+    mode === "system" ? (prefersDarkMode ? "dark" : "light") : mode;
+
+  // Tạo theme với paletteMode
+  const theme = createAppTheme(paletteMode);
+
+  // Lưu chế độ vào localStorage khi thay đổi
   useEffect(() => {
     localStorage.setItem("theme-mode", mode);
   }, [mode]);
 
-  // Hàm chuyển đổi chế độ
-  const toggleColorMode = () => {
-    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+  // Xử lý thay đổi chế độ
+  const handleModeChange = (event) => {
+    setMode(event.target.value);
   };
 
   return (
@@ -38,13 +46,26 @@ function App() {
       <CssBaseline />
       <Box sx={{ p: 3 }}>
         <Box sx={{ mb: 2, display: "flex", alignItems: "center", gap: 1 }}>
-          <IconButton onClick={toggleColorMode} color="inherit">
-            {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
-          </IconButton>
-
-          <Button variant="outlined" onClick={toggleColorMode}>
-            {mode === "dark" ? "Light Mode" : "Dark Mode"}
-          </Button>
+          {/* Dropdown để chọn chế độ */}
+          <Select value={mode} onChange={handleModeChange} size="small">
+            <MenuItem value="light">
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <LightModeIcon fontSize="small" /> Light Mode
+              </Box>
+            </MenuItem>
+            <MenuItem value="dark">
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <DarkModeOutlinedIcon fontSize="small" />
+                Dark Mode
+              </Box>
+            </MenuItem>
+            <MenuItem value="system">
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <SettingsBrightnessIcon fontSize="small" />
+                System
+              </Box>
+            </MenuItem>
+          </Select>
         </Box>
 
         <Box
@@ -56,7 +77,9 @@ function App() {
             mb: 3,
           }}
         >
-          <h1>Chế độ hiện tại: {mode}</h1>
+          <h1>
+            Chế độ hiện tại: {mode} (Theme: {paletteMode})
+          </h1>
           <div>La Đại Lộc</div>
         </Box>
 
