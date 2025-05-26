@@ -1,49 +1,51 @@
 import { createTheme } from "@mui/material/styles";
 
-// Tạo hàm tạo theme dựa vào mode
 export const createAppTheme = (mode) => {
-  return createTheme({
+  const baseTheme = createTheme({
     palette: {
       mode,
       ...(mode === "light"
         ? {
-            // Light mode
-            primary: { main: "#4355B9" }, // Xanh chàm dịu hơn
-            secondary: { main: "#A88EDA" }, // Tím nhạt dễ chịu
+            primary: { main: "#1976d2" },
+            secondary: { main: "#9c27b0" },
             background: {
-              default: "#F4F6F8", // Nền xám trắng nhẹ
-              paper: "#FFFFFF", // Giấy trắng nhẹ
+              default: "#f5f5f5",
+              paper: "#ffffff",
             },
             text: {
-              primary: "#2D3748", // Xám đậm dễ đọc
-              secondary: "#718096", // Xám phụ nhẹ
+              primary: "#212121",
+              secondary: "#616161",
             },
-            success: { main: "#48BB78" },
-            info: { main: "#4299E1" },
-            warning: { main: "#ECC94B" },
-            error: { main: "#E53E3E" },
+            success: { main: "#2e7d32" },
+            info: { main: "#0288d1" },
+            warning: { main: "#f9a825" },
+            error: { main: "#d32f2f" },
           }
         : {
-            // Dark mode
-            primary: { main: "#667EEA" },
-            secondary: { main: "#B794F4" },
+            primary: { main: "#64b5f6" },
+            secondary: { main: "#ba68c8" },
             background: {
-              default: "#1A202C",
-              paper: "#2D3748",
+              default: "#0d1117",
+              paper: "#161b22",
             },
             text: {
-              primary: "#EDF2F7",
-              secondary: "#A0AEC0",
+              primary: "#e6edf3",
+              secondary: "#8b949e",
             },
-            success: { main: "#48BB78" },
-            info: { main: "#63B3ED" },
-            warning: { main: "#ECC94B" },
-            error: { main: "#FC8181" },
+            success: { main: "#2ea043" },
+            info: { main: "#58a6ff" },
+            warning: { main: "#d29922" },
+            error: { main: "#f85149" },
           }),
     },
   });
-};
 
-// Xuất theme mặc định (light mode)
-const theme = createAppTheme("light");
-export default theme;
+  // Thêm thuộc tính tùy chỉnh
+  return {
+    ...baseTheme,
+    trello: {
+      appBarHeight: "48px",
+      boardBarHeight: "58px",
+    },
+  };
+};
