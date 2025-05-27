@@ -44,8 +44,8 @@ export const createAppTheme = (mode) => {
   return {
     ...baseTheme,
     trello: {
-      appBarHeight: "48px",
-      boardBarHeight: "58px",
+      appBarHeight: "58px",
+      boardBarHeight: "60px",
     },
   };
 };

@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import AppBar from "../../components/AppBar";
+import AppBar from "~/components/AppBar";
 import BoardBar from "./BoardBar";
 import BoardContent from "./BoardContent";
 

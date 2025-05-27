@@ -12,12 +12,12 @@ function ModeSelect({ mode, handleModeChange }) {
       <Select value={mode} onChange={handleModeChange} size="small">
         <MenuItem value="light">
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <LightModeIcon fontSize="small" /> Light Mode
+            <LightModeIcon fontSize="small" /> Light
           </Box>
         </MenuItem>
         <MenuItem value="dark">
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <DarkModeOutlinedIcon fontSize="small" /> Dark Mode
+            <DarkModeOutlinedIcon fontSize="small" /> Dark
           </Box>
         </MenuItem>
         <MenuItem value="system">
