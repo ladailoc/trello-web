@@ -25,7 +25,7 @@ module.exports = {
     "no-multi-spaces": 1,
     "no-multiple-empty-lines": 1,
     "space-before-blocks": ["error", "always"],
-    indent: ["warn", 2],
+    // indent: ["warn", 2],
     "linebreak-style": 0,
     "comma-spacing": 1,
     "arrow-spacing": 1,

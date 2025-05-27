@@ -38,6 +38,66 @@ export const createAppTheme = (mode) => {
             error: { main: "#f85149" },
           }),
     },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            "*::-webkit-scrollbar": {
+              width: "8px",
+              height: "8px",
+            },
+            "*::-webkit-scrollbar-thumb": {
+              backgroundColor: "rgba(0, 0, 0, 0.2)",
+              borderRadius: "8px",
+            },
+            "*::-webkit-scrollbar-thumb:hover": {
+              backgroundColor: "rgba(56, 147, 186, 0.4)",
+            }
+          },
+        },
+      },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            // fontSize: "1rem",
+            borderRadius: "8px",
+            textTransform: "none", // Không viết hoa chữ
+            padding: "5px 10px",
+          },
+        },
+      },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: ({ theme }) => {
+            return {
+              color: theme.palette.primary.main,
+              fontSize: "0.875rem",
+            };
+          },
+        },
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: ({ theme }) => {
+            return {
+              color: theme.palette.primary.main,
+              fontSize: "0.875rem",
+              ".MuiOutlinedInput-notchedOutline": {
+                borderColor: theme.palette.primary.light,
+              },
+              "&:hover": {
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: theme.palette.primary.main,
+                },
+              },
+              "& fieldset": {
+                borderWidth: "1px !important",
+              },
+            };
+          },
+        },
+      },
+    },
   });
 
   // Thêm thuộc tính tùy chỉnh
