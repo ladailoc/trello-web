@@ -15,7 +15,6 @@ function ThemeWrapper() {
 
   // Phát hiện chế độ hệ thống (light/dark)
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  console.log("prefersDarkMode:", prefersDarkMode);
 
   // Xác định palette.mode dựa trên mode
   const paletteMode =
