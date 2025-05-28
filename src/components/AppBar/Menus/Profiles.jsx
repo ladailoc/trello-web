@@ -32,7 +32,7 @@ const Profiles = () => {
           aria-expanded={open ? "true" : undefined}
         >
           <Avatar
-            sx={{ width: 30, height: 30 }}
+            sx={{ width: 36, height: 36 }}
             alt="La Dai Loc"
             src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/482005191_1317184785997582_2477304933580895668_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFKh8qI0-EqypY7-sLLZjjT_JkWxNJKwUb8mRbE0krBRl9IrqhVFtK44OkNr7MFmvi5Ih3nqbeE0kpS9WqXeUXG&_nc_ohc=j-brGMDGGH8Q7kNvwEMili3&_nc_oc=AdmFqn91d-CYJpkh5prApE0G23mForxztuQy_fDoEiZUud7OyYx5Akp33IJoTid3R1o&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=BgXiOt6vbwF1cLXRcbq9Jg&oh=00_AfK6zZPTsJeiDniRcHhBIghx8wxiZbXboIOx0hmWWl1gqA&oe=683B5F77"
           />

@@ -9,7 +9,22 @@ function ModeSelect({ mode, handleModeChange }) {
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
       {/* Dropdown để chọn chế độ */}
-      <Select value={mode} onChange={handleModeChange} size="small">
+      <Select
+        value={mode}
+        onChange={handleModeChange}
+        size="small"
+        sx={{
+          color: "white",
+          ".MuiOutlinedInput-notchedOutline": { borderColor: "white" },
+          "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: "white" },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "white",
+          },
+          ".MuiSvgIcon-root": {
+            color: "white",
+          },
+        }}
+      >
         <MenuItem value="light">
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <LightModeIcon fontSize="small" /> Light

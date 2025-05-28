@@ -11,7 +11,7 @@ const Board = ({ mode, setMode }) => {
     <Container disableGutters maxWidth={false} sx={{ height: "100vh" }}>
       <AppBar mode={mode} setMode={setMode} theme={theme} />
       <BoardBar theme={theme} />
-      <BoardContent />
+      <BoardContent theme={theme} />
     </Container>
   );
 };
