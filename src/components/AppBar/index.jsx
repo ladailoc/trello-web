@@ -37,7 +37,7 @@ const AppBar = ({ mode, setMode, theme }) => {
         gap: 2,
         paddingX: 2,
         overflowX: "auto",
-        bgcolor: theme.palette.mode === "light" ? "#0984e3" : "#2c3e50",
+        bgcolor: theme.palette.mode === "light" ? "#004C99" : "#2c3e50",
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
