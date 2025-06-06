@@ -38,7 +38,6 @@ const BoardBar = ({ theme }) => {
         gap: 2,
         paddingX: 2,
         overflowX: "auto",
-        borderBottom: `1px solid ${theme.palette.primary.light}`,
         bgcolor: theme.palette.mode === "light" ? "#0066CC" : "#34495e",
       }}
     >

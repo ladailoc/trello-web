@@ -1,8 +1,8 @@
 import { Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import AppBar from "~/components/AppBar";
-import BoardBar from "./BoardBar";
-import BoardContent from "./BoardContent";
+import AppBar from "~/components/AppBar/AppBar";
+import BoardBar from "./BoardBar/BoardBar";
+import BoardContent from "./BoardContent/BoardContent";
 
 const Board = ({ mode, setMode }) => {
   const theme = useTheme();
