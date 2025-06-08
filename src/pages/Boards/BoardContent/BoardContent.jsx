@@ -1,6 +1,8 @@
 import Box from "@mui/material/Box";
 import ListColumns from "./ListColumns/ListColumns";
-const BoardContent = ({ theme }) => {
+import { mapOrder } from "~/utils/sorts";
+const BoardContent = ({ theme, board }) => {
+  const orderedColumns = mapOrder(board?.columns, board?.columnOrderIds, "_id");
   return (
     <Box
       sx={{
@@ -10,7 +12,7 @@ const BoardContent = ({ theme }) => {
         padding: "10px 0",
       }}
     >
-      <ListColumns theme={theme} />
+      <ListColumns theme={theme} columns={orderedColumns} />
     </Box>
   );
 };

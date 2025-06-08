@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import AppBar from "~/components/AppBar/AppBar";
 import BoardBar from "./BoardBar/BoardBar";
 import BoardContent from "./BoardContent/BoardContent";
+import { mockData } from "~/apis/mock_data";
 
 const Board = ({ mode, setMode }) => {
   const theme = useTheme();
@@ -10,8 +11,8 @@ const Board = ({ mode, setMode }) => {
   return (
     <Container disableGutters maxWidth={false} sx={{ height: "100vh" }}>
       <AppBar mode={mode} setMode={setMode} theme={theme} />
-      <BoardBar theme={theme} />
-      <BoardContent theme={theme} />
+      <BoardBar theme={theme} board={mockData?.board} />
+      <BoardContent theme={theme} board={mockData?.board} />
     </Container>
   );
 };
