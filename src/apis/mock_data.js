@@ -6,7 +6,12 @@ export const mockData = {
     type: "public", // 'private'
     ownerIds: [], // Những users là Admin của board
     memberIds: [], // Những users là member bình thường của board
-    columnOrderIds: ["column-id-01", "column-id-02", "column-id-03"], // Thứ tự sắp xếp / vị trí của các Columns trong 1 boards
+    columnOrderIds: [
+      "column-id-01",
+      "column-id-02",
+      "column-id-03",
+      "column-id-04-placeholder-card",
+    ], // Thứ tự sắp xếp / vị trí của các Columns trong 1 boards
     columns: [
       {
         _id: "column-id-01",
@@ -185,6 +190,28 @@ export const mockData = {
             memberIds: [],
             comments: [],
             attachments: [],
+          },
+        ],
+      },
+      {
+        _id: "column-id-04-placeholder-card",
+        boardId: "board-id-01",
+        title: "Empty Column 04",
+        // Cách xử lý bug khi Column là rỗng
+        /**
+         * Phía FE sẽ tự tạo ra 1 card đặc biệt: Place holder Card không liên quan BE
+         * Card đặc biệt này được ẩn ở giao diện UI người dùng
+         * Cấu trúc Id của card này để unique rất đơn giản, không cần làm random phức tạp
+         * "columnId-placeholder-card" (mỗi column chỉ có thể có tối đa 1 card Place holder)
+         * Quan trọng khi tạo: phải đầy đủ: (_id, boardId, columnId, FE_PlaceholderCard)
+         */
+        cardOrderIds: ["card-id-14"],
+        cards: [
+          {
+            _id: "card-id-14",
+            boardId: "board-id-01",
+            columnId: "column-id-04-placeholder-card",
+            FE_PlaceholderCard: true,
           },
         ],
       },
