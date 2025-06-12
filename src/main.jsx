@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { createAppTheme } from "./theme"; // Giả sử file theme vẫn được import
 
-function ThemeWrapper() {
+export const ThemeWrapper = () => {
   // Lưu trữ chế độ: 'light', 'dark', hoặc 'system'
   const [mode, setMode] = useState(() => {
     const savedMode = localStorage.getItem("theme-mode");
@@ -35,7 +35,7 @@ function ThemeWrapper() {
       {/* Truyền mode và setMode vào App */}
     </ThemeProvider>
   );
-}
+};
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
