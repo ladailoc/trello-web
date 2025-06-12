@@ -20,7 +20,8 @@ import { arrayMove } from "@dnd-kit/sortable";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Column from "./ListColumns/Column/Column";
 import Card from "./ListColumns/Column/ListCards/Card/Card";
-import { cloneDeep } from "lodash";
+import { cloneDeep, isEmpty } from "lodash";
+import { generatePlaceholderCard } from "~/utils/formatters";
 
 const ACTIVE_DRAG_ITEM_TYPE = {
   COLUMN: "ACTIVE_DRAG_ITEM_TYPE_COLUMN",
@@ -117,6 +118,11 @@ const BoardContent = ({ theme, board }) => {
           (card) => card._id !== activeDraggingCardId
         );
 
+        // Thêm placeholder card nếu column rỗng: bị kéo hết card đi, không còn card nào
+        if (isEmpty(nextActiveColumn.cards)) {
+          nextActiveColumn.cards = [generatePlaceholderCard(nextActiveColumn)];
+        }
+
         // Cập nhật lại cardOrderIds của column active (cũ) sau khi xóa card
         nextActiveColumn.cardOrderIds = nextActiveColumn.cards.map(
           (card) => card._id
@@ -142,11 +148,17 @@ const BoardContent = ({ theme, board }) => {
           rebuild_activeDraggingCardData
         );
 
+        // Nếu column đích tồn tại placeholder card thì cần xóa nó đi
+        nextOverColumn.cards = nextOverColumn.cards.filter(
+          (card) => !card.FE_PlaceholderCard
+        );
+
         // Cập nhật lại cardOrderIds của column active (cũ) sau khi xóa card
         nextOverColumn.cardOrderIds = nextOverColumn.cards.map(
           (card) => card._id
         );
       }
+
       return nextColumns;
     });
   };
